@@ -236,7 +236,7 @@ let assert_command
          in
          let () =
            (* Dump sinput into the process stdin *)
-           let buff = " " in
+           let buff = Bytes.of_string " " in
              Stream.iter
                (fun c ->
                   let _i : int =
@@ -259,12 +259,12 @@ let assert_command
            (* Dump process output to stderr *)
            begin
              let chn = open_in fn_out in
-             let buff = String.make 4096 'X' in
+             let buff = Bytes.make 4096 'X' in
              let len = ref (-1) in
                while !len <> 0 do
-                 len := input chn buff 0 (String.length buff);
+                 len := input chn buff 0 (Bytes.length buff);
                  OUnitLogger.Test.raw_printf
-                   ctxt.test_logger "%s" (String.sub buff 0 !len);
+                   ctxt.test_logger "%s" (Bytes.to_string (Bytes.sub buff 0 !len));
                done;
                close_in chn
            end;

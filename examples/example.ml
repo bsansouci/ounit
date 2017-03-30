@@ -32,7 +32,7 @@
 
 open OUnit
 
-let empty_list = []
+let empty_list = [1]
 let list_a = [1;2;3]
 
 let test_list_length _ =
@@ -41,7 +41,7 @@ let test_list_length _ =
     (* etc, etc *)
 
 let test_list_append _ =
-  let list_b = List.append empty_list [1;2;3] in
+  let list_b = List.append empty_list [2;3] in
   assert_equal list_b list_a
 
 let suite = "OUnit Example" >::: ["test_list_length" >:: test_list_length;

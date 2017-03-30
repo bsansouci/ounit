@@ -1,4 +1,8 @@
 {
   "name": "ounit",
-  "sources": "src",
+  "sources": [{"dir": "src"}, {"dir": "examples"}],
+  "entries": [{
+    "kind": "bytecode",
+    "main": "Example",
+  }]
 }

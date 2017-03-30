@@ -72,12 +72,13 @@ let check_variable_name str =
 
 let cli_name name =
   let cli_name = "-" ^ name in
+  let cli_name = Bytes.of_string cli_name in
   for i = 1 to String.length name do
-     match cli_name.[i] with
+     match Bytes.get cli_name i with
        | '_' -> cli_name.[i] <- '-'
        | _ -> ()
   done;
-  cli_name
+  Bytes.to_string cli_name
 
 let subst conf extra_subst str =
   let substitutions = Hashtbl.create (Hashtbl.length metaconf) in
