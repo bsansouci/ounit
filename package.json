@@ -1,0 +1,6 @@
+{
+  "name": "ounit",
+  "dependencies": {
+    "bs-platform": "bsansouci/bucklescript#simple-native-compilation"
+  }
+}
